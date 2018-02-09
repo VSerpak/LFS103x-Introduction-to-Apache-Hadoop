@@ -1,0 +1,31 @@
+From the end user's perspective, HDFS looks and feels like a regular filesystem: the one that you are used to on your desktop.
+It feels so familiar, that it takes the casual user quite a bit of time to realize that there may be a few restrictions in HDFS, compared to a traditional filesystem:
+like, for example, the fact that you cannot really write to the middle of the file.
+Just like any filesystem, HDFS stores data in files, and files are grouped together into a tree of subdirectories.
+The similarities with the regular filesystem continue, in that HDFS splits all the data stored in the files into a series of chunks called blocks,
+but, unlike a regular filesystem, HDFS likes its blocks really big.
+And it actually stores them on different servers in the cluster.
+So, for example, multiple copies of the same block would exist to achieve reliability.
+So, if a server hosting a block fails, or experiences a faulty hard drive, HDFS will still give you that data back; it will just have to read it from a different server in the cluster.
+As with any distributed filesystem, HDFS hides all of the bookkeeping complexity from its clients.
+You just read the files, and the blocks come to you.
+Now, unlike most of the distributed filesystem, HDFS allows for one critical piece of bookkeeping information to be actually given back to the client.
+It allows the client to know where the replicas of each block are in a cluster.
+In other words, if a client asks, HDFS gives that client a full map.
+This may sound like a subtle extension, but it actually is powerful enough to enable a whole new architecture of data processing,
+an architecture where, instead of sending data to the client, you send client computation to the data.
+Keep this in mind. We will run into this principle of sending computation to where the data is when discussing YARN,
+and also, you will see it in our discussion of analytical frameworks in chapter 4.
+Now, I know that all this talk about how simple it is to use HDFS may make you each to play with it right away,
+but you will actually have to wait for it until Chapter 5.
+Still, this screenshot should give you a taste of what interaction with HDFS will look like.
+All the usual tools, like web-based filesystem browsers, and basic CLI, work as you would expect them to work with any other filesystem.
+So, here, for example, we are looking at a folder called "/user/it1/geolocation", and seeing that there are two files owned by maria_dev, called "geolocation.csv" and "trucks.csv".
+Pretty easy stuff. Even if the command we use to list the files in a terminal window look a little bit unfamiliar,
+it's easy to understand what they do.
+But, speaking of those commands, here is a taste of the CLI that HDFS supports.
+Unlike UNIX command line utilities, where each action is represented by a separate program ("ls", for example, lists files, and "cat" concatenates them),
+in HDFS, you run a single command called "hdfs", with an option"dfs", and then, you give it different sub options, all starting with dash (-), to indicate an action you'd like it to do.
+The actions are all very familiar, like "-ls" for listing files, "-cat" for concatenating them, and so forth.
+There are, however, a few HDFS-specific ones, like "-put" and "-get", that we will see in our hands-on chapter, chapter 5.
+Now that we've got a taste of what HDFS feels like, let's try to understand how it works across a cluster of servers.

@@ -1,0 +1,37 @@
+Many companies are turning to Big Data because they want to pursue business outcomes, to transform how they do business.
+This is called digital transformation, a profound and accelerating transformation of business activities, processes, competences, and models,
+to fully leverage the changes and opportunities of digital technologies, and their impact across society, in a strategic and a prioritized way.
+Whoo! That was a mouthful. Well, basically, digital transformation means that most of the traditional businesses would like to start behaving like next-generation businesses do:
+you know, guys like Uber, Airbnb, Netflix, businesses like that.
+The Big Data-related part of digital transformation is typically built around three key categories of activities:
+data discovery, single view, and finally, predictive analytics.
+We will review all three, but keep in mind that, despite the order we present them in,
+an enterprise pursuing all three can start anywhere.
+There is no linear path and the Big Data journey varies from one enterprise to the next.
+Many companies begin their path to Hadoop with data discovery;
+in other words, trying to solve the problem for exploring data that has never been available to them at scale they.
+They feel that this would allow them to consolidate scattered data, explore types of data they've never had at scale,
+discover surprising insights, and finally, create better data governance strategies.
+Pursuing this outcome is especially common for companies with a long operating history,
+and there is a lot of diversity in how a team manages different types of data, especially when it comes to managing them for different lines of business within the same enterprise.
+A successful outcome around the data discovery effort typically leads to a single view.
+After all, a successful data discovery is a situation where companies realize that they're sitting on a treasure trove of data,
+but it is scattered all over the place, and, even if they can't effectively analyze the data within a given storage silo,
+say, a single relational database or a storage solution, the task of being able to correlate data sets across the sales becomes your next huge problem.
+Remember our previous example of multiple emails and social media handles, all linking back to the same customer?
+Well, if you have all those stored in different systems, you will never be able to make the discovery that user Joe can be represented by five different handles.
+In a situation like this, the company starts using Hadoop to unify all the data, and paint a single view of their business.
+This kind of unification is called a Hadoop-based data lake.
+The Hadoop data lake creates a single view of the customer, a single view of the patient, a single view of the telecom network,
+a single view of the supply chain, or single view of the product, or a single view of just about anything else.
+A comprehensive Hadoop data Lake leads to our third and most exciting, and some may even say science fiction-like category: predictive analytics.
+Predictive analytics is the most sophisticated business outcome possible with Hadoop.
+It is one that gets all the media attention, and a lot of times, is surrounded with controversy, as was, for example, the case with Cambridge Analytica recently.
+All of this is easy to understand when you realize that, with far more data about what's happening in the past and advanced machine learning algorithms,
+companies can now predict future outcomes with far more certainty.
+And it actually, at times, appears like the companies are downright clairvoyant.
+For example, businesses may use predictive analytics to do proactive repairs on equipment, or recommend the next product to buy,
+or stock the appropriate amount of inventory, or even design their stores, or model financial risk.
+Increasingly enough, predictive analytics requires a very strong baseline of Big Data management practices,
+and it also requires the new kind of skills to be available within the enterprise.
+There's a whole new profession, in fact, that is growing like wildfire, and it is called data scientist.

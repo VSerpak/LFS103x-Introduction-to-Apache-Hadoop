@@ -1,0 +1,88 @@
+Another way to look at two of the fundamental building blocks of Hadoop is to ask ourselves
+what resources in a traditional data center do we need to manage in order to realize a data-like vision.
+The answer is quite simple actually.
+So, there is direct-attached storage - you know, things like hard disks, SSDs,  and rack-local storage [units],
+and then, there is CPU and RAM.
+After all, you need to store all the data somewhere, and then, you need to process it by running various analytical algorithms in memory, utilizing CPU power.
+So, that's why Hadoop is basically about two components.
+First, there is YARN, that manages all of the CPU in memory,
+and then, there is HDFS, that manages all of the direct-attached storage.
+Both come from Apache Hadoop, but they can also be used interdependently.
+Some traditional enterprise storage vendors, for example, are providing HDFS-compatible layers on top of their old-school storage products,
+and this works because HDFS and YARN are independent.
+So, as long as a storage product speaks HDFS-compatible API, YARN will be more than happy to work with it.
+This approach of loosely coupled YARN and HDFS APIs provides Hadoop customers with a lot of flexibility.
+In fact, Hadoop becomes the kind of a platform that frees you to capture any data and store it for as long as you need it,
+analyze data for any application you already use, or any future application that you might create.
+You can also use the platform to explore your data with any combination of batch interactive search and streaming analytics.
+You can also do quite sophisticated machine learning on top of it.
+Finally, you can deploy all these capabilities however you like, and change those deployments whenever it suits your needs.
+It looks like as a technology, Hadoop is really all about giving you ultimate flexibility in dealing with your Big Data challenges.
+Interestingly enough though, it may be the case that its ultimate flexibility is actually one of the open source projects.
+So, let's look into how Hadoop really became Hadoop.
+Hadoop really came into its own at Yahoo, but maybe the most significant impact that Yahoo had on it wasn't even giving it a great environment to mature in,
+but the fact that, from day one, Yahoo embraced Hadoop as an open source project driven and developed not only by Yahoo engineers,
+but by the full power of the Apache Software Foundation development community.
+So, what is Apache Software Foundation?
+Well, it is an all volunteer organization that develops, stewards, and incubates more than 350 open-source projects and initiatives that cover a wide range of technologies.
+We basically have everything in Apache, all the way from Apache Abdera to Apache Zookeeper.
+Apache actually started as a home for the web server, which still is, by the way, the number one web server on the internet,
+but it now evolved into being a home for some of the best-known names in the open source world.
+It also became synonymous with a governance model known as "The Apache Way".
+Hadoop actually happens to be one of the projects developed under the Apache umbrella. And, speaking of which, we should always remember that it is Apache Hadoop.
+It is never Yahoo's Hadoop, and it is most definitely not Cloudera's, or Hortonworks's Hadoop. It is actually Apache Hadoop.
+It is a product of tremendous collaboration of an extremely talented group of open source developers spread all over the globe.
+Almost all of the Hadoop ecosystem projects are also developed under the umbrella of the Apache Software Foundation (ASF).
+And with Hadoop being a runaway success as it is, the sheer number of these projects is nothing short of amazing.
+Now, if you think about who is developing all of this amazing technology, you may be thinking that this is just a ragtag group of hackers.
+Well, if you think that, think again; because Hadoop, and almost all of its ecosystem projects, are a product of a broad-based and collaborative effort by engineers working at who's who of the IT industry.
+They are the companies like Microsoft, Yahoo, Facebook, LinkedIn, just to name a few.
+What is even more amazing is that ASF's model completely redefines what it means to be a vendor of technology versus being a customer of it.
+There is a lot of Hadoop customers who are actually not even necessarily big technology players,
+but who are still participating directly in developing Hadoop within the framework provided by Apache Software Foundation.
+These names include folks like Schlumberger, Target, Merck, Aetna,
+and, any way you look at it, being on Hadoop bandwagon means rolling with who's who of the top fortune 500 companies.
+It's actually a very good place to be, and the role that ASF plays is to maintain a strictly neutral playing field for this humongous development effort.
+At the end of the day, ASF wants that anybody, even an individual like you, can join this community effort today, and start contributing.
+But how big is this community effort? Well, since you're asking, just to give you a taste of how many projects there are in the Hadoop ecosystem,
+here is a chart that is a subset of those supported by a single commercial vendor, Hortonworks:
+the columns on this chart are individual Hadoop ecosystem projects, and the rows are versions of these projects that are being put into each release of the Hortonworks's Data Platform product.
+The slide definitely looks like an eye chart. And yet, those are not even all of the projects that you might encounter in the Hadoop ecosystem.
+The situation, in a way, is very similar to the Linux distributions, where the multitude of applications, all running on the same kernel,
+need to be managed together as a consistent software package.
+So, in fact, a Linux distribution model was an inspiration for how to manage this complexity of the Hadoop ecosystem.
+In order to appreciate it, let's actually go back 15 to 20 years,
+and remember that the mission of integrating all of the GNU software and the Linux kernel was first realized by a 100% open and community-driven distribution called Debian.
+The genius of Debian was not only that it gave customers the polished experience of a software platform,
+but it actually spawned a whole bunch of downstream distributions, all building off of its common base.
+Some of these distributions were commercial in nature, like Ubuntu, made by a company called Canonical.
+Some were hobbies, like DSL, and yet, some pushed into just brand new frontiers, like Knoppix, that was the first live Linux system that you can boot off of a CD or a USB stick.
+These secondary distributions were very different, and yet, they had one thing in common.
+Because they were all based on Debian, they didn't have to reinvent the wheel spending time making sure that various pieces of the GNU software would play nicely with each other;
+they just focused on the value add-on on top of what Debian gave them by default.
+In other words, they all left the heavy lifting to the Debian community.
+So, just like Debian, there is a community like that in Apache.
+It's called Apache Big Top; and Apache Big Top aims to do the same to the Hadoop ecosystem that Debian did to Linux.
+If you want to put it in a slightly different way, Apache Big Top tries to be to Hadoop what Debian is to Linux.
+And, just like Debian, Apache Big Top enjoys quite a bit of popularity.
+All of the major commercial distributions, including Apache Hadoop, for example, coming from Cloudera, Hortonworks, Amazon, Google, and others,
+are, to various degrees, derived from a common effort by the Apache Big Top community.
+So, there you have it: the Hadoop ecosystem is a vast, rapidly evolving hotbed of innovation.
+It takes a dedicated Apache project, Big Top, to put it all together, and package it and give it to the users as a neat distribution.
+And it takes vendors like Hortonworks to use Big Top as a basis for packaging their products and bringing all that innovation and then some to their customers.
+Life is great.
+Do you think there is anything missing?
+Well, surprisingly, the answer may be "Yes".
+What's missing is a global product coordination across industry expectations, and this mission belongs to ODPi, an open-source collaborative project of The Linux Foundation, which we will review here.
+ODPi aims at strengthening the open source flexibility of Hadoop by adhering to core standards defined by a series of specifications developed by key players and members of ODPi.
+Ultimately, this matters to all Hadoop customers.
+ODPi standardizes multiple Hadoop deployments on the same core version of Apache Hadoop and Hadoop ecosystem components.
+And these helps enterprises pick and choose the components that work best in combination.
+So, for example: Pivotal HAWQ, a framework that gives Hadoop strong SQL capabilities, can run on a product from Hortonworks, HDP, and IBM BigInsights,
+precisely because it leverages the work that ODPi has done.
+The big data market clearly requires a standard, and predictable, and mature Hadoop base core platform,
+so that we can take the guesswork out of fragmented and duplicative processes of what works and what doesn't.
+And these, in turn, would enable enterprises and ecosystem vendors to focus on integrating and building business-driven applications and use cases that actually drive the innovation.
+Pretty powerful mission, isn't it?
+Well, pretty powerful, but also pretty complimentary to the mission of the Apache Software Foundation.
+Together, ODPi and ASF play off of each other's strengths and make investment in the Hadoop technology a hundred percent safe choice for any modern enterprise.

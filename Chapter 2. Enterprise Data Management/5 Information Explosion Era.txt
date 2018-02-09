@@ -1,0 +1,43 @@
+According to the report done by the EMC Corporation, we are living in the information explosion era.
+What does it mean?
+Well, the world's data used to double every century, but now, it doubles every two years.
+This explosion is driven by the Internet of Things, by mobile devices, and our ability to generate more digital content than ever before.
+It is also fueled by enterprises all over the world transitioning to interfacing with their customers via web 2.0 and mobile technologies.
+Now, here is an intriguing statistics on how quickly this is happening.
+The digital universe will grow from four zettabytes of data in 2013, to a whopping 44 zettabytes in 2020.
+Where is this data coming from? Is it any different from what we used to deal with five or ten years ago?
+And, most importantly, what sets it apart when it comes to storing and analyzing it?
+Arguably, this trend began when businesses started to shift how they interact with their customers.
+As I said, now the shift is clearly moving towards web 2.0 and mobile technologies.
+It further accelerated when social networks became all but ubiquitous in our life.
+Put both of these together and you get a perfect storm of ever-growing amounts of data, that can be used to analyze customer behavior or optimize business outcomes.
+Moreover, you get the data coming at you much quicker than before, and also getting stale much faster.
+Finally, if you get a much more diverse sets of data sources available to you from user click streams, mobile web tracking, speech-to-text conversion, and other types of immersive technologies,
+then, you have even more data diversity than you could possibly imagine.
+To appreciate how different this data collection environment is, consider the following example:
+if you were a retail business operating a fleet of stores in the United States 20 years ago,
+the bulk of the customer interaction data would come from your own cash registers,
+In physical stores, tracking both purchases and payment methods.
+Today, you are likely operating a digital storefront on the web, and, in addition to the brick-and-mortar data, you are getting much more.
+For starters, you are getting very detailed web logs, tracking how customers are interacting with your website.
+Then, you are also tracking each individual customer profile, knowing when to target them for certain promotions, or even what items they may be interested in purchasing,
+all of that based on the past behavior or demographics that they belong to.
+Outside of your own digital footprint, you can also track your customers' sentiment on social media and through the search engines that they use to come to the website.
+And if that wasn't enough, you also get to track your customers in real world by keeping track of markers such as Wi-Fi and cellular IDs.
+All of a sudden, just storing this tremendous amount of information becomes a challenge.
+Now, throw analytics requirements into the mix, and you start to understand why something like Hadoop had to be created.
+Hadoop actually is set up to provide an effective platform for storing and analyzing data streams that have three very unique challenges.
+So, let's talk about those.
+Those are known as the 3 Vs of Big Data, and they are data volume, data velocity, and data variety.
+In 2001, the industry analyst Doug Laney described Big Data using those 3 Vs, and the name kind of stuck.
+They really do capture the essence of Big Data perfectly well.
+In a way, it wouldn't be an oversimplification to say that they have become a definition for Big Data.
+All three of those terms should be pretty self-explanatory, especially in the context of our previous example.
+But let's quickly walk through them, one by one.
+Variety is all about the fact that unstructured and semi-structured data is becoming as strategic as the traditional structured data that you would store in a relational database.
+Volume - volume speaks for itself. Data is coming in forms of new sources, as well as increased regulation in multiple areas,
+meaning storing more data for a longer period of time becomes a necessity.
+Velocity - velocity is requirement that machine data, as well as data coming from new sources is being ingested at speeds not even imagined a few years ago.
+So, whenever anybody says that Hadoop is a Big Data technology, what they are really saying is that Hadoop was designed from the ground-up to deal with all three of these Vs.
+Specifically, Hadoop is well-suited for any scenario where the volume and variety of data types overwhelm the existing systems,
+and, when the data velocity is also something too much for them to handle.

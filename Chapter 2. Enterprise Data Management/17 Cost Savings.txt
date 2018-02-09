@@ -1,0 +1,25 @@
+Even if you don't find yourself among enterprises ready to embark on a digital transformation journey,
+our next category of use cases around Big Data may still be applicable to you.
+We are, of course, talking about cost savings.
+The application of Hadoop and Big Data to what already exists in the enterprise.
+Unlike our previous categories, these use cases don't seek to create a revolution, but rather to optimize the existing assets.
+They also provide a more gentle introduction of Big Data technologies into the existing IT landscape.
+So, let's take a look at the top three categories around cost saving.
+The first category is focused on turning your enterprise's cold data storage into an active archive.
+This could range from making historical records available to business analysts, all the way to offloading some of the data from mainframes and other legacy systems.
+All of that will dramatically lower the total cost of ownership of data and help your enterprise optimize its bottom line.
+Another popular category is ETL Onboard.
+ETL here stands for Extract, Transform, and Load. Think about it this way:
+since the traditional enterprise data warehouse solutions use 60% of their cycles on average just to prepare data for a particular schema,
+moving that phase, which is exactly the ETL phase to Hadoop,
+allows those systems to use their costly resources for what they were really intended, which is basically storage and analytics.
+Hadoop itself has a schema-on-read architecture, which means that you can store data in its native format,
+and retrieve whatever data you need to analyze, regardless of its source, format, or data structure.
+Once again, you are using Hadoop and Big Data not instead of, but next to existing EDW solutions.
+Thus, the total cost of ownership of data in your enterprise is likely to be reduced.
+Finally, the most advanced cost saving use case is to enrich existing data with newly available data.
+With these data enrichment capabilities, companies can incorporate publicly available datasets from sources like Twitter, Facebook, open government data,
+or offer new products for services.
+They can also prevent fraud by finding new data correlations that point to bad behavior.
+As you can see, even if you start with cost savings as your main goal, you pretty quickly get to a rather sophisticated use of Big Data,
+and can start providing value way beyond the initial cost saving objective.
