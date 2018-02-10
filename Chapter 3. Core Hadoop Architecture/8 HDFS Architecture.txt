@@ -1,0 +1,76 @@
+Whenever we say that HDFS runs on a cluster, we don't really mean that it has exclusive rights to it.
+In fact, on the very same servers, you will typically see multiple daemons belonging to different parts of the Hadoop ecosystem.
+At the very least, on every Hadoop cluster you will have HDFS and YARN's daemons running.
+Thus, the typical Hadoop cluster may look something like this.
+First, there will be a few master nodes dedicated to running daemons that coordinate the overall activities of the cluster.
+For example, in HDFS's case, that overall coordination is done by a NameNode daemon, and you can see it running on master node number 1.
+But, you can also see other ones, all of them colored in green, running on master nodes 1 to 4.
+While the master nodes are extremely critical to the overall health and performance of the cluster, strictly speaking,
+they don't actually do any real work, they don't store blocks of information, nor do they run data processing tasks.
+That happens on the worker nodes, and there is typically way more worker nodes in a cluster than master nodes.
+In our case, you can see worker nodes going from 1 to 7, each of them running daemons colored in blue.
+One of those daemons is HDFS's DataNode, and the other one is the YARN NodeManager.
+Typically, that's all that worker nodes run. Now, just for completeness sake, we also need to mention the third kind of nodes in the cluster - a utility node.
+Those nodes are typically not considered to be members of the cluster, but they serve as gateways into it.
+You won't have to worry about them until we get to chapter 6, where we have to review the Hadoop security, but you can see one of those displayed here in the upper right corner.
+But, back to HDFS. Let's zoom in on our daemons.
+Now, from HDFS's perspective, a cluster consists of a NameNode coordinating a whole bunch of DataNodes, but also giving three fundamental services to every single HDFS client.
+The first one is metadata management. The other one is namespace management, and the third one is block management.
+Metadata management deals with keeping track of permissions and ownership of files and folders,
+and any kind of extended metadata, such as block size, replication level, user quotas, or anything else that is specific to HDFS.
+Namespace [management] provides a hierarchy of namespaces, basically all of the folders are rooted at / and you can traverse to get to the files.
+Knowing which files and folders are where is half the battle. The other half is knowing what blocks belong to what files, and where on the cluster they are stored.
+That is the block map.
+And, given that a single file can be as large as a few terabytes, there is a lot and lot of information, even just for a block map to keep in memory.
+That makes NameNode particularly memory-hungry.
+So, overall, the HDFS deployment begins with configuring and starting a NameNode on a server, with lots and lots of memory.
+Once the NameNode is up and running, it makes itself available on the network,
+and a whole bunch of DataNodes initiate connections to it. This is very important to remember:
+DataNodes connect to a NameNode, and not the other way around.
+This is one of the core design principles of Hadoop: the fact that DataNodes can come and go, and all it takes to expand the storage capacity of the cluster is to bring a whole bunch of the new ones online.
+NameNode doesn't really have to care, it just keeps track of what DataNodes are online, and what DataNodes are providing storage services in form of block information.
+So, at every given moment, there could be DataNodes that are active, shown in blue here, and the ones that are inactive or down or offline: DataNode number 2, shown in gray here.
+NameNode keeps track of all of this; its job is to keep an eye on all the DataNodes that are connected to it, and it needs to know when a given DataNode goes down,
+so it can reroute requests for blocks to other DataNodes,
+So, for example, even though block 1-2-3 is hosted on three DataNodes here, DataNode 1, DataNode 2, and DataNode 4,
+the request for block 1-2-3 can only be served from DataNode 1 and DataNode 4.
+NameNode keeps track of that.
+How does it do it? Well, it does it by receiving small amounts of information every so often from all of the DataNodes that are active.
+That small amount of information is called a "heartbeat".
+So, DataNode 1, for example, will be sending a heartbeat, basically saying "Hey, I'm still here. This is my latest heartbeat"
+and so will DataNode number 4.
+DataNode number 2, on the other hand, will not provide a heartbeat, which will make NameNode realize that a replication factor for block 1-2-3 went down from 3 to 2,
+because it can only be reached on DataNode 1 and DataNode 4.
+This is enough for NameNode to figure out that it actually needs to initiate the creation of an additional copy just to keep block 1-2-3 safe above a replication level of 3.
+So, it does so by essentially telling a DataNode 1, the one that is active and actually has a copy of a block 1-2-3 ,to replicate block 1-2-3 to DataNode 3.
+How does it do it? Well, it does it through a replication pipeline, and we will review it next, when we review how a brand new file gets written to HDFS.
+Now, one important thing to realize is that any HDFS interaction that we've been talking so far, seem like they are coming through an NameNode,
+and it seems like all the data transfer will also go through a central point of a NameNode.
+Now, of course, this would be horrible from a performance standpoint, and it's definitely not the case.
+Since it is not uncommon to have hundreds of DataNodes per one NameNode, HDFS designers were clever enough to make sure that NameNode gets out of the data transfer business as quickly as possible,
+and allows clients to fetch or send data directly from or to DataNodes, once they get all of the information they need
+Now, NameNode does so as soon as it coordinates all of that metadata and a client understands what DataNode it actually needs to talk to.
+So, let's take an example of a client, shown here in the upper left corner, trying to write a file to HDFS.
+What happens is this: first, the client sends a request to the NameNode to add a file to HDFS, then, it receives a reply with basically a NameNode telling it
+"Here is your lease to a file path"
+Then, the client will keep iterating all the blocks that it has, and, for every block, the client will request the NameNode to provide the block ID,
+and a list of destination DataNodes.
+Once the client has that information, the NameNode gets out of the way completely, and the client proceeds to write directly to the first DataNode in the list.
+So, here's the first block coming to DataNode 1, and then DataNode starts writing it to the disk.
+What happens then, is the replication pipeline kicks in.
+It's the same replication pipeline that we've already mentioned, and it basically takes care of making sure that DataNode number 1 writes the copy of the block to DataNode number 2,
+and then, the DataNode number 2 writes the copy of the block to DataNode number 3.
+Because all of the replication is done by the first DataNode creating a replication pipeline to the next DataNode on the list, nothing like that ever gets back to the NameNode.
+This is the same kind of replication that can be triggered by the NameNode in case where a number of copies of the same block in the cluster becomes long, but only then.
+The replication strategy employed by HDFS is actually fairly sophisticated, because HDFS is designed to assume that disk systems and networks all fail at different times.
+As a result, HDFS is also designed to automatically and transparently handle these failures,
+in that, so not only by automatically replicating data across different DataNodes, but also taking into account the probabilities of data corruption on the DataNodes where the blocks reside.
+So, let me show you this logic for a block write, that happens to land on a DataNode in rack 1.
+The first replica then goes to a DataNode that sits in a different rack in the cluster.
+This maximizes the availability of block, at the downside of additional network traffic.
+But remember: if the server goes down, it is much more likely to go down within the same rack, because of the power outage or something like that.
+Now, once the block actually gets to rack 2, the third replica can go to a server in the same rack minimizing the write cost,
+since the block doesn't have to travel over the network and we already have a copy of the block outside of the rack 2.
+A different block could also begin its life on rack 1, but then it could be replicated all the way to rack 3, again, maximizing availability,
+and the third copy will be placed within the rack 3, minimizing the write cost.
+The idea still remains the same: balance the time to complete a write of all the replicas against the maximizing availability if the data center failures occur.
